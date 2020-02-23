@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="denl-shop-service" />
+        <module name="denl-shop-entity" />
+        <module name="denl-shop-dao" />
+        <module name="denl-shop-commons" />
+        <module name="denl-shop-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="denl-shop-common" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

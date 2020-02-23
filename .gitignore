@@ -1,0 +1,17 @@
+
+denl-shop-dao/src/test/
+denl-shop-dao/target/generated-sources/
+denl-shop-entity/src/main/resources/
+denl-shop-entity/src/test/
+denl-shop-entity/target/generated-sources/
+denl-shop-service/src/main/resources/
+denl-shop-service/src/test/
+denl-shop-service/target/classes/com/nf/shop/service/front/OrderItemService.class
+denl-shop-service/target/classes/com/nf/shop/service/front/impl/OrderItemServiceImpl.class
+denl-shop-service/target/generated-sources/
+denl-shop-web/src/test/
+denl-shop-web/target/classes/zshop.sql
+denl-shop-web/target/denl-shop-web-1.0-SNAPSHOT/WEB-INF/classes/zshop.sql
+denl-shop-web/target/denl-shop-web-1.0-SNAPSHOT/WEB-INF/views/orderDetail.jsp
+denl-shop-web/target/generated-sources/
+denl-shop-web/src/main/java/com/nf/shop/controller/front/OrderController.java

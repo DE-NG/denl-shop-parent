@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nf.shop.dao.front.ShippingDao">
+
+    <sql id="ShippingColumn">
+        id,
+        customer_id,
+        receiver_name,
+        receiver_mobile,
+        receiver_city,
+        receiver_province,
+        receiver_district,
+        create_time,
+        update_time,
+        status,
+        address_detail
+    </sql>
+
+    <insert id="insertShipping" parameterType="com.nf.shop.entity.Shipping" useGeneratedKeys="true"
+            keyProperty="id" keyColumn="id">
+        insert into t_shipping
+        (customer_id, receiver_name, receiver_mobile, receiver_city, receiver_province, receiver_district, create_time, update_time, status, address_detail)
+        values
+        (#{customerId},#{receiverName},#{receiverMobile},#{receiverCity},#{receiverProvince},#{receiverDistrict},#{createTime},#{updateTime},#{status},#{addressDetail})
+    </insert>
+
+    <select id="selectAllShippings" resultType="com.nf.shop.entity.Shipping">
+        select <include refid="ShippingColumn"/>
+        from t_shipping
+        where customer_id = #{customerId} and status = #{status}
+    </select>
+
+    <select id="selectShippingByCustomerIdAndShippingId" resultType="com.nf.shop.entity.Shipping">
+        select <include refid="ShippingColumn"/>
+        from t_shipping
+        where id = #{shippingId} and customer_id = #{customerId}
+    </select>
+
+    <update id="updateByShipping" parameterType="com.nf.shop.entity.Shipping">
+        update t_shipping
+          set receiver_name = #{receiverName},
+              receiver_mobile = #{receiverMobile},
+              receiver_Province = #{receiverProvince},
+              receiver_city = #{receiverCity},
+              receiver_district = #{receiverDistrict},
+              address_detail = #{addressDetail},
+              update_time = #{updateTime}
+        where id = #{id} and customer_id = #{customerId}
+    </update>
+
+    <update id="deleteShippingByIdAndCustomerId">
+        update t_shipping
+            set status = #{status},
+                update_time = #{updateTime}
+        where id = #{shippingId} and customer_id = #{customerId}
+    </update>
+</mapper>

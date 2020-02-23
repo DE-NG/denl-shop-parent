@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nf.shop.dao.back.SystemUserDao">
+    <sql id="SystemUserColumn">
+        id,
+        login_name,
+        password,
+        phone,
+        email,
+        is_valid,
+        create_date,
+        role_id
+    </sql>
+
+    <!--多表查询映射map-->
+    <resultMap id="systemUserMap" type="com.nf.shop.entity.SystemUser">
+        <id property="id" column="id"/>
+        <result property="loginName" column="login_name"/>
+        <result property="password" column="password"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+        <result property="isValid" column="is_valid"/>
+        <result property="createDate" column="create_date"/>
+        <!--关联的Role对象,column 表示两个表对应连接的关系-->
+        <association property="role" javaType="com.nf.shop.entity.Role" column="role_id">
+            <!--role角色表中的对应关系-->
+            <id property="id" column="r.id"/>
+            <result property="roleName" column="role_name"/>
+        </association>
+    </resultMap>
+
+    <select id="selectSystemUserByLoginNameAndPassword" resultMap="systemUserMap">
+        select s.id,s.login_name,s.password,s.phone,s.email,s.is_valid,s.create_date,s.role_id,r.id 'r.id',r.role_name
+        from t_sysuser s
+          left join t_role r ON s.role_id = r.id
+        where login_name = #{loginName} and password = #{password} and is_valid = #{isValid}
+    </select>
+</mapper>
